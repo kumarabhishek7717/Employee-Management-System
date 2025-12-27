@@ -1,8 +1,16 @@
+
 const employees = [
   {
     id: 1,
+    firstName: "Rahul",
     email: "employee1@example.com",
     password: "123",
+    taskCount: {
+      newTask: 1,
+      active: 1,
+      completed: 1,
+      failed: 1
+    },
     tasks: [
       {
         active: true,
@@ -39,8 +47,15 @@ const employees = [
 
   {
     id: 2,
+    firstName: "Amit",
     email: "employee2@example.com",
     password: "123",
+    taskCount: {
+      newTask: 1,
+      active: 2,
+      completed: 1,
+      failed: 0
+    },
     tasks: [
       {
         active: true,
@@ -77,8 +92,15 @@ const employees = [
 
   {
     id: 3,
+    firstName: "Suresh",
     email: "employee3@example.com",
     password: "123",
+    taskCount: {
+      newTask: 1,
+      active: 1,
+      completed: 1,
+      failed: 1
+    },
     tasks: [
       {
         active: false,
@@ -111,84 +133,8 @@ const employees = [
         category: "DevOps"
       }
     ]
-  },
-
-  {
-    id: 4,
-    email: "employee4@example.com",
-    password: "123",
-    tasks: [
-      {
-        active: true,
-        newTask: true,
-        completed: false,
-        failed: false,
-        title: "Content Writing",
-        description: "Write blog post for product launch",
-        date: "2025-01-06",
-        category: "Content"
-      },
-      {
-        active: false,
-        newTask: false,
-        completed: true,
-        failed: false,
-        title: "SEO Optimization",
-        description: "Optimize website SEO keywords",
-        date: "2025-01-01",
-        category: "Marketing"
-      },
-      {
-        active: true,
-        newTask: false,
-        completed: false,
-        failed: false,
-        title: "Social Media Post",
-        description: "Create Instagram promotional post",
-        date: "2025-01-07",
-        category: "Marketing"
-      }
-    ]
-  },
-
-  {
-    id: 5,
-    email: "employee5@example.com",
-    password: "123",
-    tasks: [
-      {
-        active: false,
-        newTask: false,
-        completed: true,
-        failed: false,
-        title: "Attendance Review",
-        description: "Review team attendance records",
-        date: "2025-01-02",
-        category: "HR"
-      },
-      {
-        active: true,
-        newTask: true,
-        completed: false,
-        failed: false,
-        title: "Interview Scheduling",
-        description: "Schedule interviews for candidates",
-        date: "2025-01-08",
-        category: "HR"
-      },
-      {
-        active: false,
-        newTask: false,
-        completed: false,
-        failed: true,
-        title: "Policy Update",
-        description: "Update employee leave policy",
-        date: "2025-01-03",
-        category: "HR"
-      }
-    ]
   }
-];
+]
 
 const admin = [
   {
@@ -196,7 +142,9 @@ const admin = [
     email: "admin@example.com",
     password: "123"
   }
-];
+]
+
+
 
 
 export const setLocalStorage = () =>{
@@ -205,13 +153,9 @@ export const setLocalStorage = () =>{
    localStorage.setItem('admin', JSON.stringify (admin))
 }
 
-export const getLocalStorage = () =>{
+export const getLocalStorage = () => {
+  const employees = JSON.parse(localStorage.getItem('employees'))
+  const admin = JSON.parse(localStorage.getItem('admin'))
 
- const employees = JSON.parse (localStorage.getItem('employees'))
- const admin = JSON.parse (localStorage.getItem('admin')) 
-
-
- return(employees , admin)
-
-
+  return { employees, admin }
 }
