@@ -1,91 +1,35 @@
 import React from 'react'
+import AcceptTask from './AcceptTask'
+import NewTask from './NewTask'
+import CompleteTask from './CompleteTask'
+import FailedTask from './FailedTask'
 
 const TaskList = ({data}) => {
+    
+    
   return (
- <div id= 'tasklist' className='h-[55%] overflow-x-auto  flex items-center justify-start gap-5 flex-nowrap py-5 mt-10'> 
-        <div className='h-full flex-shrink-0 w-[300px] py-5 px-6 bg-red-400 rounded-xl '>
+ <div id= 'tasklist' className='h-[55%] overflow-x-auto  flex items-center justify-start gap-5 flex-nowrap py-5 mt-10'>
+    {data.tasks.map((elem, idx)=>{
 
-            <div className='flex justify-between items-center'>
-               <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>High</h3>
-               <h4 className='text-sm'>20 feb 2024</h4>
-            </div>
-            <h2 className='mt-5 text-2xl font-semibold'>Make a youtube video</h2>
-            <p className='text-sm mt-2'>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum officia blanditiis sapiente non soluta debitis.
-            </p>
-         
-        </div>
+        if(elem.active){
+            return <AcceptTask key={idx} data={elem}/>
+        }
+
+        if(elem.NewTask){
+            return <NewTask key={idx} data={elem}/>
+        }
+
+        if(elem.Completed){
+            return <CompleteTask key={idx} data={elem}/>
+        }
+
+        if(elem.failed)
+            return <FailedTask key={idx} data={elem}/>
+        
+    })}
        
-       <div className='h-full flex-shrink-0 w-[300px] py-5 px-6 bg-green-400 rounded-xl '>
-
-            <div className='flex justify-between items-center'>
-               <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>High</h3>
-               <h4 className='text-sm'>20 feb 2024</h4>
-            </div>
-            <h2 className='mt-5 text-2xl font-semibold'>Make a youtube video</h2>
-            <p className='text-sm mt-2'>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum officia blanditiis sapiente non soluta debitis.
-            </p>
-         
-        </div>
-       
-       <div className='h-full flex-shrink-0 w-[300px] py-5 px-6 bg-emerald-400 rounded-xl '>
-
-            <div className='flex justify-between items-center'>
-               <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>High</h3>
-               <h4 className='text-sm'>20 feb 2024</h4>
-            </div>
-            <h2 className='mt-5 text-2xl font-semibold'>Make a youtube video</h2>
-            <p className='text-sm mt-2'>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum officia blanditiis sapiente non soluta debitis.
-            </p>
-         
-        </div>
-       
-       <div className='h-full flex-shrink-0 w-[300px] py-5 px-6 bg-blue-400 rounded-xl '>
-
-            <div className='flex justify-between items-center'>
-               <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>High</h3>
-               <h4 className='text-sm'>20 feb 2024</h4>
-            </div>
-            <h2 className='mt-5 text-2xl font-semibold'>Make a youtube video</h2>
-            <p className='text-sm mt-2'>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum officia blanditiis sapiente non soluta debitis.
-            </p>
-         
-        </div>
-
-        <div className='h-full flex-shrink-0 w-[300px] py-5 px-6 bg-yellow-400 rounded-xl '>
-
-            <div className='flex justify-between items-center'>
-               <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>High</h3>
-               <h4 className='text-sm'>20 feb 2024</h4>
-            </div>
-            <h2 className='mt-5 text-2xl font-semibold'>Make a youtube video</h2>
-            <p className='text-sm mt-2'>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum officia blanditiis sapiente non soluta debitis.
-            </p>
-         
-        </div>
-
-        <div className='h-full flex-shrink-0 w-[300px] py-5 px-6 bg-orange-400 rounded-xl '>
-
-            <div className='flex justify-between items-center'>
-               <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>High</h3>
-               <h4 className='text-sm'>20 feb 2024</h4>
-            </div>
-            <h2 className='mt-5 text-2xl font-semibold'>Make a youtube video</h2>
-            <p className='text-sm mt-2'>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum officia blanditiis sapiente non soluta debitis.
-            </p>
-         
-        </div>
-       
-       
-       
-      
-      
-    </div>
+   
+</div>
   )
 }
 
